@@ -177,7 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($instertar === false) {
         echo "Error al insertar: " . print_r(sqlsrv_errors(), true);
     } else {
-        echo "<script>alert('Registro exitoso');</script>";
+        echo "<script>alert('Registro exitoso ');</script>";
     }
 }
 ?>
