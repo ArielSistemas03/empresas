@@ -1,0 +1,114 @@
+# Proyecto Empresas
+
+Este sistema está desarrollado en **PHP** y utiliza **SQL Server** como motor de base de datos.  
+En el archivo `config.php` se encuentra la configuración de conexión.
+
+
+## Configuración de la base de datos
+
+El archivo `config.php` contiene las credenciales necesarias para conectarse a SQL Server.  
+Ejemplo:
+
+php
+<?php
+// Conexión a base de datos Operaciones1
+$serverName = "DESAROLLO-BACRO\\SQLEXPRESS"; 
+$connectionOptions = array(
+    "Database" => "Operaciones1",
+    "Uid" => "usuario_bd",
+    "PWD" => "pass_bd",
+    "CharacterSet" => "UTF-8"
+);
+
+$conn = sqlsrv_connect($serverName, $connectionOptions);
+
+if ($conn === false) {
+    die(print_r(sqlsrv_errors(), true));
+}
+
+// Conexión a base de datos BASENUEVA (Compaqi)
+$serverName = "WIN-44O80L37Q7M\\COMERCIAL";
+$connectionOptions = array(
+    "Database" => "BASENUEVA",
+    "Uid" => "usuario_bd",
+    "PWD" => "pass_bd",
+    "CharacterSet" => "UTF-8"
+);
+
+$compaq = sqlsrv_connect($serverName, $connectionOptions);
+
+if ($compaq === false) {
+    die(print_r(sqlsrv_errors(), true));
+}
+?>
+
+Ejecución con XAMPP
+
+Coloca el proyecto dentro de la carpeta de tu servidor local (htdocs en XAMPP o www en WAMP).
+
+Abre en tu navegador:
+
+
+Ejecución en IIS
+1. Habilitar IIS en Windows
+
+1.1 Abre Panel de control → Programas y características → Activar o desactivar las características de Windows.
+
+1.2 Marca Internet Information Services y confirma.
+
+1.2 Reinicia tu computadora si lo pide.
+
+2 Configurar el sitio en IIS
+
+2.1 Abre Administrador de IIS (inetmgr en Ejecutar).
+
+2.2 Haz clic en Sitios → Agregar sitio web.
+
+Configura:
+
+Nombre del sitio: Empresas
+
+Ruta física: carpeta donde está tu proyecto (C:\inetpub\wwwroot\empresas)
+
+Puerto: 80 (o el que quieras usar)
+
+Aplica y reinicia IIS.
+
+5. Probar el proyecto
+
+Copia tu carpeta del proyecto a:
+
+C:\inetpub\wwwroot\empresas
+
+
+Abre tu navegador y entra a:
+
+http://localhost/empresas/
+
+
+Si todo está correcto, debería cargar tu rondines.php y conectarse a SQL Server según lo configurado en config.php.
+
+
+Módulo Generador de Códigos QR – Puntos de Checada
+
+Este módulo permite registrar empresas/dependencias, generar códigos QR personalizados y usarlos como puntos de checadas para control de asistencia.
+
+ Flujo del sistema
+
+Formulario de registro
+
+Captura datos de la empresa/dependencia:
+
+Nombre de la empresa
+
+Dependencia
+
+Ubicación física y geográfica
+
+Teléfonos de contacto
+
+Correos electrónicos
+
+Estatus (Activo/Inactivo)
+
+ Al enviar, los datos se insertan en la tabla QR_Dependencia.
