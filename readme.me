@@ -112,3 +112,20 @@ Correos electrónicos
 Estatus (Activo/Inactivo)
 
  Al enviar, los datos se insertan en la tabla QR_Dependencia.
+
+
+Variables de entorno
+Configura el archivo config.php con las credenciales de conexión:
+<?php
+$serverName = "TU_SERVIDOR_SQL";
+$connectionOptions = array(
+    "Database" => "TU_BASE_DE_DATOS",
+    "Uid" => "USUARIO",
+    "PWD" => "CONTRASEÑA"
+);
+$conn = sqlsrv_connect($serverName, $connectionOptions);
+if (!$conn) {
+    die(print_r(sqlsrv_errors(), true));
+}
+?>
+
